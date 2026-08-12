@@ -1,0 +1,53 @@
+name: Packaging bug report
+description: Something is wrong with the .deb build, install, or dependencies
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is for problems with **packaging** (the build, the .deb, apt
+        install/upgrade, dependencies, signing). For a bug in the tool
+        itself, please report it upstream instead — see the repo's
+        `package.yaml` for the upstream project link.
+  - type: input
+    id: package
+    attributes:
+      label: Package and version
+      description: e.g. from `apt policy <package>` or the release tag installed
+      placeholder: e.g. ripgrep 14.1.0-1.trixie
+    validations:
+      required: true
+  - type: input
+    id: distro
+    attributes:
+      label: Debian suite and architecture
+      placeholder: e.g. Trixie (13), amd64
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include exact error output if available.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I confirmed this is a packaging issue, not a bug in the tool itself
+          required: true
