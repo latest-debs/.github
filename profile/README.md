@@ -50,9 +50,9 @@ move.
 
 **latest-debs exists to close that gap.** We do proper Debian packaging of
 upstream releases in fully public CI and publish to a signed apt repository —
-so `apt install` and `apt upgrade` just work, across 8 architectures, with
-source packages available, within hours of each upstream release. Native
-packages, native tooling, no compromises.
+so `apt install` and `apt upgrade` just work, across every architecture each
+upstream actually ships for Linux, within hours of each upstream release.
+Native packages, native tooling, no compromises.
 
 ## The Mission
 
@@ -69,8 +69,8 @@ latest-debs removes that cost:
 - **One reusable builder** —
   [debian-multiarch-builder](https://github.com/ranjithrajv/debian-multiarch-builder),
   a GitHub Action that turns an upstream release into signed, multi-arch
-  `.deb` packages (plus source packages) in a single workflow run. No
-  packaging expertise required.
+  `.deb` packages in a single workflow run. No packaging expertise
+  required.
 - **Distribution included** — releases flow into this signed apt repo
   automatically. Nothing to host, sign, or babysit.
 - **Open to your tool** — open a
@@ -89,7 +89,7 @@ On Debian (Bookworm or Trixie), with [extrepo](https://salsa.debian.org/extrepo-
 ```sh
 sudo extrepo enable latest-debs
 sudo apt update
-sudo apt install uv eza lazygit
+sudo apt install uv eza lazygit ruff bun deno duckdb lazydocker
 ```
 
 Or add the repository manually:
@@ -103,10 +103,10 @@ echo "deb [signed-by=/etc/apt/keyrings/latest-debs.gpg] https://latest-debs.gith
 sudo apt update
 ```
 
-> **Status: early days.** The org is new and the apt repo is rolling out
-> suite by suite. If `apt update` 404s for your suite, every package is also
-> published as a plain `.deb` on each repo's Releases page — grab it and
-> `sudo dpkg -i <file>.deb`.
+> **Status: early days, but working.** All four suites (Bookworm, Trixie,
+> Forky, Sid) are live and signed today. The catalog is just small so far —
+> 8 tools — since it grows one [request](https://github.com/latest-debs/apt-repo/issues/new?template=package-request.yml)
+> at a time.
 
 ## Packages
 
@@ -115,15 +115,19 @@ sudo apt update
 | [uv](https://github.com/astral-sh/uv) | Extremely fast Python package & project manager | [![release](https://img.shields.io/github/v/release/latest-debs/uv-debian?display_name=tag&label=)](https://github.com/latest-debs/uv-debian/releases) | `sudo apt install uv` |
 | [eza](https://github.com/eza-community/eza) | Modern, maintained `ls` replacement | [![release](https://img.shields.io/github/v/release/latest-debs/eza-debian?display_name=tag&label=)](https://github.com/latest-debs/eza-debian/releases) | `sudo apt install eza` |
 | [lazygit](https://github.com/jesseduffield/lazygit) | Simple terminal UI for git | [![release](https://img.shields.io/github/v/release/latest-debs/lazygit-debian?display_name=tag&label=)](https://github.com/latest-debs/lazygit-debian/releases) | `sudo apt install lazygit` |
+| [ruff](https://github.com/astral-sh/ruff) | Extremely fast Python linter & formatter | [![release](https://img.shields.io/github/v/release/latest-debs/ruff-debian?display_name=tag&label=)](https://github.com/latest-debs/ruff-debian/releases) | `sudo apt install ruff` |
+| [bun](https://github.com/oven-sh/bun) | Fast all-in-one JavaScript runtime & toolkit | [![release](https://img.shields.io/github/v/release/latest-debs/bun-debian?display_name=tag&label=)](https://github.com/latest-debs/bun-debian/releases) | `sudo apt install bun` |
+| [deno](https://github.com/denoland/deno) | Modern runtime for JavaScript & TypeScript | [![release](https://img.shields.io/github/v/release/latest-debs/deno-debian?display_name=tag&label=)](https://github.com/latest-debs/deno-debian/releases) | `sudo apt install deno` |
+| [duckdb](https://github.com/duckdb/duckdb) | Analytical in-process SQL database | [![release](https://img.shields.io/github/v/release/latest-debs/duckdb-debian?display_name=tag&label=)](https://github.com/latest-debs/duckdb-debian/releases) | `sudo apt install duckdb` |
+| [lazydocker](https://github.com/jesseduffield/lazydocker) | The lazier way to manage everything docker | [![release](https://img.shields.io/github/v/release/latest-debs/lazydocker-debian?display_name=tag&label=)](https://github.com/latest-debs/lazydocker-debian/releases) | `sudo apt install lazydocker` |
 
 Want another tool packaged? **[Request it](https://github.com/latest-debs/apt-repo/issues/new?template=package-request.yml)** — that's how the list grows. Track all open requests under the
 [`package-request` label](https://github.com/latest-debs/apt-repo/labels/package-request).
 
 ## Supported systems
 
-- **Debian:** Bookworm (12) and Trixie (13) live now; Forky (14/testing) and Sid (unstable) as builds land
-- **Architectures:** amd64, arm64, armel, armhf, i386, ppc64el, s390x, riscv64
-- **Source packages** (`.dsc`) are published alongside every binary
+- **Debian:** Bookworm (12), Trixie (13), Forky (14/testing), and Sid (unstable) — all live
+- **Architectures:** amd64, arm64, armhf, i386 (Bookworm/Trixie only), ppc64el, riscv64, s390x — whichever each upstream actually publishes a Linux build for (not every tool covers all seven; see each package's repo for its exact list)
 - **Updates:** the repo rebuilds automatically, roughly every 6 hours after an upstream release
 
 Ubuntu and derivatives are *not* officially targeted yet — the packages may
@@ -154,7 +158,7 @@ a reusable GitHub Action you can inspect and reuse.
 | Repo | Purpose |
 |------|---------|
 | [apt-repo](https://github.com/latest-debs/apt-repo) | The aggregate apt repository: signing key, `pool/`, `dists/`, build scripts, and the tool registry (`tools.yaml`) |
-| [uv-debian](https://github.com/latest-debs/uv-debian) · [eza-debian](https://github.com/latest-debs/eza-debian) · [lazygit-debian](https://github.com/latest-debs/lazygit-debian) | Per-tool packaging and multi-arch `.deb` releases |
+| [uv-debian](https://github.com/latest-debs/uv-debian) · [eza-debian](https://github.com/latest-debs/eza-debian) · [lazygit-debian](https://github.com/latest-debs/lazygit-debian) · [ruff-debian](https://github.com/latest-debs/ruff-debian) · [bun-debian](https://github.com/latest-debs/bun-debian) · [deno-debian](https://github.com/latest-debs/deno-debian) · [duckdb-debian](https://github.com/latest-debs/duckdb-debian) · [lazydocker-debian](https://github.com/latest-debs/lazydocker-debian) | Per-tool packaging and multi-arch `.deb` releases |
 | [latest-debs.github.io](https://github.com/latest-debs/latest-debs.github.io) | The landing page at [latest-debs.github.io](https://latest-debs.github.io/) |
 | [.github](https://github.com/latest-debs/.github) | This profile and org-wide defaults |
 
@@ -167,10 +171,6 @@ upstream; for packaging issues, open an issue on the tool's `-debian` repo.
 **How fresh are the packages?**
 A scheduled workflow checks upstream releases and rebuilds; expect new
 versions within ~6 hours of the upstream tag.
-
-**`apt update` says the Release file is missing / unsigned?**
-The repo is still being rolled out per suite. Check the status note above,
-or install the `.deb` directly from Releases in the meantime.
 
 **How do I add my favorite tool?**
 Open a
