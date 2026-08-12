@@ -12,6 +12,7 @@
 
 <p align="center">
   <a href="https://latest-debs.github.io/"><img src="https://img.shields.io/badge/website-latest--debs.github.io-1f6feb" alt="website"></a>
+  <a href="https://github.com/latest-debs/apt-repo/issues/new?template=package-request.yml"><img src="https://img.shields.io/badge/request-a%20package-blueviolet" alt="request a package"></a>
   <a href="https://github.com/orgs/latest-debs/discussions"><img src="https://img.shields.io/badge/chat-org%20discussions-238636" alt="discussions"></a>
   <a href="https://github.com/sponsors/latest-debs"><img src="https://img.shields.io/badge/sponsor-%E2%9D%A4-ea4aaa" alt="sponsor"></a>
 </p>
@@ -70,10 +71,12 @@ for it with `curl | sh` scripts and stale copies.
   packaging expertise required.
 - **Distribution included** — releases flow into this apt repo automatically.
   Nothing to host, sign, or babysit.
-- **Your tool here** — add it to
+- **Your tool here** — open a
+  [package request](https://github.com/latest-debs/apt-repo/issues/new?template=package-request.yml),
+  or add it to
   [`tools.yaml`](https://github.com/latest-debs/apt-repo/blob/main/tools.yaml)
-  or ask in [Discussions](https://github.com/orgs/latest-debs/discussions),
-  and every future upstream release ships as a `.deb` within hours.
+  yourself in a PR. Every future upstream release then ships as a `.deb`
+  within hours.
 
 Everything in this org is built with that same pipeline — it's the demo as
 well as the product.
@@ -112,7 +115,8 @@ sudo apt update
 | [eza](https://github.com/eza-community/eza) | Modern, maintained `ls` replacement | [![release](https://img.shields.io/github/v/release/latest-debs/eza-debian?display_name=tag&label=)](https://github.com/latest-debs/eza-debian/releases) | `sudo apt install eza` |
 | [lazygit](https://github.com/jesseduffield/lazygit) | Simple terminal UI for git | [![release](https://img.shields.io/github/v/release/latest-debs/lazygit-debian?display_name=tag&label=)](https://github.com/latest-debs/lazygit-debian/releases) | `sudo apt install lazygit` |
 
-Want another tool packaged? **[Request it](https://github.com/orgs/latest-debs/discussions)** — that's how the list grows.
+Want another tool packaged? **[Request it](https://github.com/latest-debs/apt-repo/issues/new?template=package-request.yml)** — that's how the list grows. Track all open requests under the
+[`package-request` label](https://github.com/latest-debs/apt-repo/labels/package-request).
 
 ## Supported systems
 
@@ -168,10 +172,11 @@ The repo is still being rolled out per suite. Check the status note above,
 or install the `.deb` directly from Releases in the meantime.
 
 **How do I add my favorite tool?**
-Add an entry to
+Open a
+[package request](https://github.com/latest-debs/apt-repo/issues/new?template=package-request.yml) —
+name, upstream URL, and license is all we need. Or add an entry to
 [`tools.yaml`](https://github.com/latest-debs/apt-repo/blob/main/tools.yaml)
-in a PR against `apt-repo`, or just ask in
-[Discussions](https://github.com/orgs/latest-debs/discussions).
+in a PR against `apt-repo`.
 
 ## Contributing & support
 
