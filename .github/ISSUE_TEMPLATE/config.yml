@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Request a new package
+    url: https://github.com/latest-debs/apt-repo/issues/new?template=package-request.yml
+    about: Ask us to package a new developer tool as a .deb.
+  - name: General discussion
+    url: https://github.com/orgs/latest-debs/discussions
+    about: Questions, ideas, and chat.
