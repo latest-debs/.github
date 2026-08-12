@@ -1,0 +1,25 @@
+name: Feature or enhancement request
+description: Request a new architecture, suite, or improvement to packaging/build tooling
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For requesting a brand-new tool to be packaged, use
+        [Package request](https://github.com/latest-debs/apt-repo/issues/new?template=package-request.yml)
+        on `apt-repo` instead — this template is for improvements to
+        existing packaging (new arch/suite support, build workflow changes,
+        etc).
+  - type: textarea
+    id: summary
+    attributes:
+      label: What would you like to see?
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Why is this useful?
+    validations:
+      required: true
