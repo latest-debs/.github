@@ -17,6 +17,28 @@
 
 ---
 
+## The problem with dev tools on Debian
+
+Debian stable is an excellent base — but its packages freeze at release time
+and stay frozen for years. Developer tools move far faster, often releasing
+weekly, so the versions shipping in `apt` are routinely months or years
+behind upstream. Every common workaround trades away something real:
+
+| Today's workaround | The catch |
+|--------------------|-----------|
+| Wait for Debian stable | Years behind; missing features and fixes |
+| Pull from testing/sid/backports | Version still lags, drags in unrelated churn |
+| `curl … \| sh` install scripts | No signature verification, no upgrades, no clean uninstall |
+| Ad-hoc third-party repos | Often single-arch, unsigned, silently abandoned |
+| `cargo install` / `pipx` / manual builds | Needs a toolchain; no system-wide updates; you become the packager |
+| Snap / Flatpak | Extra runtime and sandboxing overhead for a simple CLI |
+
+**latest-debs exists to close that gap.** We do proper Debian packaging of
+upstream releases in fully public CI and publish to a signed apt repository —
+so `apt install` and `apt upgrade` just work, across 8 architectures, with
+source packages available, within hours of each upstream release. Native
+packages, native tooling, no compromises.
+
 ## New here? Start in 30 seconds
 
 On Debian (Bookworm or Trixie), with [extrepo](https://salsa.debian.org/extrepo-team/extrepo):
