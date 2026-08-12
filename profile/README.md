@@ -27,11 +27,24 @@ behind upstream. Every common workaround trades away something real:
 | Today's workaround | The catch |
 |--------------------|-----------|
 | Wait for Debian stable | Years behind; missing features and fixes |
-| Pull from testing/sid/backports | Version still lags, drags in unrelated churn |
+| Run Sid, or pull from testing/backports | See below — Sid solves a different problem |
 | `curl … \| sh` install scripts | No signature verification, no upgrades, no clean uninstall |
 | Ad-hoc third-party repos | Often single-arch, unsigned, silently abandoned |
 | `cargo install` / `pipx` / manual builds | Needs a toolchain; no system-wide updates; you become the packager |
 | Snap / Flatpak | Extra runtime and sandboxing overhead for a simple CLI |
+
+**"But Debian Sid already has fresh packages — what are you solving?"**
+Sid is a full rolling *development branch*: every package on your system
+moves, all the time. It's the right base for working on Debian itself, and
+the wrong base for a workstation or server you depend on. Installing a
+single tool from Sid onto stable usually drags in a newer glibc and half
+the toolchain with it. And even Sid trails upstream — maintainer upload
+cycles, NEW-queue reviews, and release freezes regularly add weeks of lag.
+
+What we're solving is deliberately narrower: **keep Debian stable as your
+OS, and get just your dev tools at upstream speed** — built as proper
+packages *for* the stable suites, so nothing else on your system has to
+move.
 
 **latest-debs exists to close that gap.** We do proper Debian packaging of
 upstream releases in fully public CI and publish to a signed apt repository —
