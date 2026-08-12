@@ -54,32 +54,33 @@ so `apt install` and `apt upgrade` just work, across 8 architectures, with
 source packages available, within hours of each upstream release. Native
 packages, native tooling, no compromises.
 
-## The real mission: make Debian packaging fast and easy
+## The Mission
 
-Debian packaging has a reputation — and it deserves it. `debhelper`, Policy,
-`control`/`rules` files, multi-arch builds, signing, repo hosting: powerful,
-but a steep and time-consuming detour when you just want to ship a CLI. Many
-developers, teams, and orgs skip `.deb` entirely — and their Debian users pay
-for it with `curl | sh` scripts and stale copies.
+**Make Debian packaging fast and easy.**
 
-**The main goal of this initiative is to remove that cost:**
+Shipping software for Debian shouldn't require becoming a Debian packager —
+yet today it does: `debhelper`, Policy, `control`/`rules` files, multi-arch
+builds, signing, repo hosting. A steep, time-consuming detour when you just
+want to ship a CLI. Most developers, teams, and orgs skip `.deb` entirely,
+and their Debian users pay for it in `curl | sh` scripts and stale copies.
+
+latest-debs removes that cost:
 
 - **One reusable builder** —
   [debian-multiarch-builder](https://github.com/ranjithrajv/debian-multiarch-builder),
   a GitHub Action that turns an upstream release into signed, multi-arch
   `.deb` packages (plus source packages) in a single workflow run. No
   packaging expertise required.
-- **Distribution included** — releases flow into this apt repo automatically.
-  Nothing to host, sign, or babysit.
-- **Your tool here** — open a
+- **Distribution included** — releases flow into this signed apt repo
+  automatically. Nothing to host, sign, or babysit.
+- **Open to your tool** — open a
   [package request](https://github.com/latest-debs/apt-repo/issues/new?template=package-request.yml),
   or add it to
   [`tools.yaml`](https://github.com/latest-debs/apt-repo/blob/main/tools.yaml)
-  yourself in a PR. Every future upstream release then ships as a `.deb`
-  within hours.
+  in a PR. Every future upstream release then ships as a `.deb` within hours.
 
-Everything in this org is built with that same pipeline — it's the demo as
-well as the product.
+Everything in this org is built with that same pipeline — the repo is the
+demo as well as the product.
 
 ## New here? Start in 30 seconds
 
