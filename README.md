@@ -7,6 +7,8 @@ organization profile and org-wide defaults.
 
 - **[profile/README.md](profile/README.md)** — what you see on
   [github.com/latest-debs](https://github.com/latest-debs)
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** — org-wide default, including the
+  outreach sign-up
 - `assets/` — logo and images used by the profile
 - `.github/FUNDING.yml` — sponsor links shown across org repos
 

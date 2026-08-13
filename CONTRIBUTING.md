@@ -5,6 +5,45 @@ org-wide default — it applies to any repo under
 [latest-debs](https://github.com/latest-debs) that doesn't have its own
 `CONTRIBUTING.md`.
 
+## 🎙️ Outreach — sign up to help spread the word
+
+The tooling, the pipeline, and the packages all work. What the initiative
+needs most right now is **people** — people who'll help bring latest-debs
+and these packages to the developers and projects who'd benefit from them.
+
+If you'd like to **sign up for outreach**, here's what that looks like (any
+subset, any time — no commitment beyond what you pick):
+
+- **Introduce a project to the packaging service.** A tool you use or admire
+  that ships a Linux binary but has no Debian package (or a stale one) — tell
+  its maintainers about [latest-debs](https://github.com/latest-debs). The
+  [service pitch](https://github.com/latest-debs/apt-repo/blob/main/SERVICE.md)
+  is written for exactly that conversation.
+- **Drive a package request.** Find the tool, open the
+  [request](https://github.com/latest-debs/apt-repo/issues/new?template=package-request.yml)
+  yourself (name + upstream URL + license is all it takes), and follow up
+  until it's live.
+- **Spread the word.** A blog post, a Hacker News/Reddit thread, a talk, a
+  tweet — explain the problem (Debian's frozen dev tools) and the fix
+  (`apt install` gets current versions, signed and test-gated). The
+  [org profile](https://github.com/latest-debs) and
+  [SERVICE.md](https://github.com/latest-debs/apt-repo/blob/main/SERVICE.md)
+  are the source material; link back to
+  [latest-debs.github.io](https://latest-debs.github.io/).
+- **Help in conversations.** Answer questions in
+  [org discussions](https://github.com/orgs/latest-debs/discussions), on the
+  landing page, or on package-request issues — "is my distro supported?",
+  "how do I install X?", "is this official Debian?".
+- **Review and polish the message.** The profile, the READMEs, SERVICE.md,
+  and the landing page are copy we want to keep sharp. Suggest edits, file
+  issues, open PRs.
+
+**Sign up:** reply in
+[org discussions](https://github.com/orgs/latest-debs/discussions) ("count me
+in for outreach" + pick an item), or just start — open an issue or PR here,
+or in [apt-repo](https://github.com/latest-debs/apt-repo). We'll point you
+at whatever needs a hand.
+
 ## Requesting a new package
 
 Open a
@@ -35,6 +74,18 @@ Release assets must be named so the Debian suite is embedded, e.g.:
 <package>_<version>-<build>.<suite>_<arch>.deb
 ```
 
+## Improving the pipeline
+
+- **Fix packaging issues** on any `<tool>-debian` repo — a glob, an arch
+  pattern, a lintian tag, a failing smoke test.
+- **Improve the builder.** The
+  [debian-multiarch-builder](https://github.com/ranjithrajv/debian-multiarch-builder)
+  action is the engine; a fix there ships to every package via the
+  [feature channel](https://github.com/latest-debs/apt-repo/blob/main/README.md#shipping-a-template-change-the-feature-channel).
+- **Harden the vet/approval flow** — provenance pinning, license/SPDX
+  pre-checks, per-arch coverage checks, draft-before-publish. See
+  [apt-repo](https://github.com/latest-debs/apt-repo).
+
 ## Pull requests
 
 - Keep changes scoped and explain the "why" in the description.
@@ -48,3 +99,13 @@ Open a [discussion or issue](https://github.com/latest-debs/apt-repo/issues)
 on `apt-repo`, or check the
 [landing page](https://latest-debs.github.io/) for an overview of the
 project.
+
+## Code of conduct
+
+Be kind, be constructive, and assume good faith. This is a volunteer project;
+maintainers are people with limited time.
+
+## Supporting the project
+
+If latest-debs saves you time,
+[sponsor the automation](https://github.com/sponsors/latest-debs).

@@ -203,7 +203,15 @@ in a PR against `apt-repo`.
 
 ## Contributing & support
 
-Packaging fixes, new tools, and build-config reviews are all welcome — see
+**Outreach is the thing we need most right now** — the tooling works and the
+packages exist; what's missing is people bringing them to the projects and
+developers who'd benefit. If you'd like to **sign up for outreach** — pitching
+the packaging service to a project's maintainers, driving package requests,
+writing about the project, or fielding questions in
+[discussions](https://github.com/orgs/latest-debs/discussions) — see
+[CONTRIBUTING.md](https://github.com/latest-debs/.github/blob/main/CONTRIBUTING.md).
+
+Packaging fixes, new tools, and build-config reviews are also welcome — see
 [apt-repo](https://github.com/latest-debs/apt-repo) for how the pipeline
 works. If latest-debs saves you time,
 [sponsor the automation](https://github.com/sponsors/latest-debs).
