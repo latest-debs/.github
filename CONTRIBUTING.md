@@ -19,19 +19,6 @@ subset, any time — no commitment beyond what you pick):
   its maintainers about [latest-debs](https://github.com/latest-debs). The
   [service pitch](https://github.com/latest-debs/apt-repo/blob/main/SERVICE.md)
   is written for exactly that conversation.
-- **Help upstream a tool into Debian proper.** Some tracked tools have no
-  official Debian package, or a stale one; latest-debs papers over that gap,
-  but the real fix is a package in the Debian archive itself. It's a bigger
-  lift than the other items here — but it's the highest-leverage one: the
-  tool ships via `apt` with zero extra repos, keys, or trust decisions to
-  explain; it gets Debian's own QA (autopkgtest, the security tracker,
-  freeze policy) instead of ours; and it outlives us — once a tool lands in
-  Debian proper, latest-debs stops being needed for it. If you've packaged
-  for Debian before, or want to learn, start at
-  [mentors.debian.net](https://mentors.debian.net/) and the
-  [New Maintainers' Guide](https://www.debian.org/doc/manuals/maint-guide/);
-  our [Packages](https://github.com/latest-debs/apt-repo#packages) table is
-  a ready-made shortlist of candidates.
 - **Drive a package request.** Find the tool, open the
   [request](https://github.com/latest-debs/apt-repo/issues/new?template=package-request.yml)
   yourself (name + upstream URL + license is all it takes), and follow up
@@ -56,6 +43,28 @@ subset, any time — no commitment beyond what you pick):
 in for outreach" + pick an item), or just start — open an issue or PR here,
 or in [apt-repo](https://github.com/latest-debs/apt-repo). We'll point you
 at whatever needs a hand.
+
+## 📦 Upstreaming — help get a tool into Debian proper
+
+This is a different kind of contribution from outreach, not a subset of it:
+where outreach spreads the word about latest-debs, upstreaming works to make
+latest-debs unnecessary for a given tool. Some tracked tools have no official
+Debian package, or a stale one; latest-debs papers over that gap, but the
+real fix is a package in the Debian archive itself.
+
+It's a bigger lift than an outreach item — real packaging work, possibly a
+sponsor relationship — but it's the highest-leverage contribution available:
+the tool ships via `apt` with zero extra repos, keys, or trust decisions to
+explain; it gets Debian's own QA (autopkgtest, the security tracker, freeze
+policy) instead of ours; and it outlives us — once a tool lands in Debian
+proper, latest-debs stops being needed for it.
+
+If you've packaged for Debian before, or want to learn, start at
+[mentors.debian.net](https://mentors.debian.net/) and the
+[New Maintainers' Guide](https://www.debian.org/doc/manuals/maint-guide/);
+our [Packages](https://github.com/latest-debs/apt-repo#packages) table is a
+ready-made shortlist of candidates. Open an issue or discussion to let us
+know you're picking one up.
 
 ## Requesting a new package
 
