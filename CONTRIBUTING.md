@@ -54,12 +54,15 @@ explain; it gets Debian's own QA (autopkgtest, the security tracker, freeze
 policy) instead of ours; and once a tool lands in Debian proper, latest-debs
 stops being needed for it.
 
-If you've packaged for Debian before, or want to learn, start at
+Ready to help? Check our
+[Packages](https://github.com/latest-debs/apt-repo#packages) table for a
+tool that's missing from Debian or outdated there, then file an ITP (Intent
+to Package) bug — `reportbug wnpp`, severity `wishlist`, subject
+`ITP: <package> -- <description>` — to claim it. From there,
 [mentors.debian.net](https://mentors.debian.net/) and the
-[New Maintainers' Guide](https://www.debian.org/doc/manuals/maint-guide/);
-our [Packages](https://github.com/latest-debs/apt-repo#packages) table is a
-ready-made shortlist of candidates. Open an issue or discussion to let us
-know you're picking one up.
+[New Maintainers' Guide](https://www.debian.org/doc/manuals/maint-guide/)
+walk through packaging and finding a sponsor. Open an issue or discussion to
+let us know you're picking one up too.
 
 ## Requesting a new package
 
