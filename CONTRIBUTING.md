@@ -46,18 +46,13 @@ at whatever needs a hand.
 
 ## 📦 Upstreaming — help get a tool into Debian proper
 
-This is a different kind of contribution from outreach, not a subset of it:
-where outreach spreads the word about latest-debs, upstreaming works to make
-latest-debs unnecessary for a given tool. Some tracked tools have no official
-Debian package, or a stale one; latest-debs papers over that gap, but the
-real fix is a package in the Debian archive itself.
-
-It's a bigger lift than an outreach item — real packaging work, possibly a
-sponsor relationship — but it's the highest-leverage contribution available:
-the tool ships via `apt` with zero extra repos, keys, or trust decisions to
+Some tracked tools have no official Debian package, or a stale one;
+latest-debs papers over that gap, but the real fix is a package in the
+Debian archive itself — and it's the highest-leverage contribution here.
+The tool ships via `apt` with zero extra repos, keys, or trust decisions to
 explain; it gets Debian's own QA (autopkgtest, the security tracker, freeze
-policy) instead of ours; and it outlives us — once a tool lands in Debian
-proper, latest-debs stops being needed for it.
+policy) instead of ours; and once a tool lands in Debian proper, latest-debs
+stops being needed for it.
 
 If you've packaged for Debian before, or want to learn, start at
 [mentors.debian.net](https://mentors.debian.net/) and the
