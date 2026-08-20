@@ -7,9 +7,12 @@ org-wide default — it applies to any repo under
 
 ## 🎙️ Outreach — sign up to help spread the word
 
-The tooling, the pipeline, and the packages all work. What the initiative
-needs most right now is **people** — people who'll help bring latest-debs
-and these packages to the developers and projects who'd benefit from them.
+This isn't a pitch for something we're planning to build — it's live.
+Signed, lintian-checked, smoke-tested packages already ship across all four
+Debian suites, with new upstream releases landing within minutes of
+publishing. 24 tools and counting. What the initiative needs most right now
+is **people** — people who'll help bring latest-debs and these packages to
+the developers and projects who'd benefit from them.
 
 If you'd like to **sign up for outreach**, here's what that looks like (any
 subset, any time — no commitment beyond what you pick):
@@ -72,6 +75,16 @@ on [apt-repo](https://github.com/latest-debs/apt-repo) with the tool name,
 upstream URL, and license. Tracked under the
 [`package-request` label](https://github.com/latest-debs/apt-repo/labels/package-request).
 
+Before requesting, check whether the tool is already at its latest upstream
+version in any live Debian suite — bookworm, trixie, forky, or **sid**:
+`apt-cache madison <pkg>` (or `https://tracker.debian.org/pkg/<pkg>`). If any
+of them is already current, we won't package it — vetting checks this
+automatically and will decline the request. See
+[Debian parity](https://github.com/latest-debs/apt-repo/blob/main/README.md#debian-parity-when-we-step-aside)
+for the policy and how to install that one package from that suite safely
+(directly if it's the suite you already run, pinned if it isn't — never a
+wholesale suite upgrade).
+
 ## Reporting a packaging bug
 
 Open an issue on the specific `<tool>-debian` repo (not `apt-repo`) — that's
@@ -105,6 +118,20 @@ Release assets must be named so the Debian suite is embedded, e.g.:
 - **Harden the vet/approval flow** — provenance pinning, license/SPDX
   pre-checks, per-arch coverage checks, draft-before-publish. See
   [apt-repo](https://github.com/latest-debs/apt-repo).
+- **Flag a stalled tool.** There's no automated staleness monitor yet — if
+  a tracked tool hasn't picked up a new upstream release in a while, open
+  an issue on its `<tool>-debian` repo (worth checking whether the
+  auto-watch job itself is failing before assuming upstream just hasn't
+  released).
+- **Review Debian-parity retirement candidates.** Run
+  `scripts/check-suite-parity.sh` (no args — checks all four live suites)
+  periodically against `tools.yaml` — it lists tracked tools that have since
+  caught up in any suite and flags them `RETIRE`, naming which suite(s) in
+  the VERDICT column. Nothing is removed automatically; a maintainer
+  confirms each one (watch for Debian package-name collisions with an
+  unrelated tool, like `fd`/`fd-find` and `zed` already had to work around)
+  before archiving the `<tool>-debian` repo and dropping the `tools.yaml`
+  entry. See [Debian parity](https://github.com/latest-debs/apt-repo/blob/main/README.md#debian-parity-when-we-step-aside).
 
 ## Pull requests
 
