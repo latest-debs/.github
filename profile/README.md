@@ -85,7 +85,7 @@ demo as well as the product.
 
 ## New here? Start in 30 seconds
 
-On Debian (Bookworm or Trixie), with [extrepo](https://salsa.debian.org/extrepo-team/extrepo):
+On Debian or Ubuntu, with [extrepo](https://salsa.debian.org/extrepo-team/extrepo):
 
 ```sh
 sudo extrepo enable latest-debs
@@ -174,12 +174,10 @@ Want another tool packaged? **[Request it](https://github.com/latest-debs/apt-re
 
 ## Supported systems
 
-- **Debian:** Bookworm (12), Trixie (13), Forky (14/testing), and Sid (unstable) — all live
-- **Architectures:** amd64, arm64, armhf, armel, i386 (Bookworm/Trixie only), ppc64el, riscv64, s390x, loong64 — whichever each upstream actually publishes a Linux build for (not every tool covers all nine; see each package's repo for its exact list)
+- **Debian:** Bookworm (12), Trixie (13), Forky (14/testing), Sid (unstable) — all live
+- **Ubuntu:** Jammy (22.04 LTS), Noble (24.04 LTS), Questing (25.10), Resolute (25.10+) — live
+- **Architectures:** amd64, arm64, armhf, armel, i386, ppc64el, riscv64, s390x, loong64 — whichever each upstream actually publishes a Linux build for, per suite (see each package's repo for its exact list)
 - **Updates:** the repo rebuilds automatically, roughly every 6 hours after an upstream release
-
-Ubuntu and derivatives are *not* officially targeted yet — the packages may
-install fine, but they're only tested on Debian.
 
 ## Trust & verification
 
