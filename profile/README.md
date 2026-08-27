@@ -107,7 +107,7 @@ sudo apt update
 > **Status: early days, but working.** All four suites (Bookworm, Trixie,
 > Forky, Sid) are live and signed today. The catalog grows one
 > [request](https://github.com/latest-debs/apt-repo/issues/new?template=package-request.yml)
-> at a time — 50 tools and counting.
+> at a time — 51 tools and counting.
 
 ## Packages
 
@@ -161,6 +161,7 @@ sudo apt update
 | [buf](https://github.com/bufbuild/buf) | The best way of working with Protocol Buffers | [![release](https://img.shields.io/github/v/release/latest-debs/buf-debian?display_name=tag&label=)](https://github.com/latest-debs/buf-debian/releases) | ![freshness](https://img.shields.io/endpoint?url=https%3A%2F%2Flatest-debs.github.io%2Fapt-repo%2Fdists%2Ffreshness.json&query=$.buf) | `sudo apt install buf` |
 | [sd](https://github.com/chmln/sd) | Intuitive find & replace CLI (sed alternative) | [![release](https://img.shields.io/github/v/release/latest-debs/sd-debian?display_name=tag&label=)](https://github.com/latest-debs/sd-debian/releases) | ![freshness](https://img.shields.io/endpoint?url=https%3A%2F%2Flatest-debs.github.io%2Fapt-repo%2Fdists%2Ffreshness.json&query=$.sd) | `sudo apt install sd` |
 | [scc](https://github.com/boyter/scc) | Very fast, accurate code counter with complexity estimates | [![release](https://img.shields.io/github/v/release/latest-debs/scc-debian?display_name=tag&label=)](https://github.com/latest-debs/scc-debian/releases) | ![freshness](https://img.shields.io/endpoint?url=https%3A%2F%2Flatest-debs.github.io%2Fapt-repo%2Fdists%2Ffreshness.json&query=$.scc) | `sudo apt install scc` |
+| [trivy](https://github.com/aquasecurity/trivy) | Find vulnerabilities, misconfigurations, secrets and SBOMs | [![release](https://img.shields.io/github/v/release/latest-debs/trivy-debian?display_name=tag&label=)](https://github.com/latest-debs/trivy-debian/releases) | ![freshness](https://img.shields.io/endpoint?url=https%3A%2F%2Flatest-debs.github.io%2Fapt-repo%2Fdists%2Ffreshness.json&query=$.trivy) | `sudo apt install trivy` |
 | [helix](https://github.com/helix-editor/helix) | A post-modern modal text editor | [![release](https://img.shields.io/github/v/release/latest-debs/helix-debian?display_name=tag&label=)](https://github.com/latest-debs/helix-debian/releases) | ![freshness](https://img.shields.io/endpoint?url=https%3A%2F%2Flatest-debs.github.io%2Fapt-repo%2Fdists%2Ffreshness.json&query=$.helix) | `sudo apt install helix` |
 | [fish](https://github.com/fish-shell/fish-shell) | The user-friendly command line shell | [![release](https://img.shields.io/github/v/release/latest-debs/fish-debian?display_name=tag&label=)](https://github.com/latest-debs/fish-debian/releases) | ![freshness](https://img.shields.io/endpoint?url=https%3A%2F%2Flatest-debs.github.io%2Fapt-repo%2Fdists%2Ffreshness.json&query=$.fish) | `sudo apt install fish` |
 
