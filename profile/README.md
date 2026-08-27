@@ -85,7 +85,13 @@ demo as well as the product.
 
 ## New here? Start in 30 seconds
 
-On Debian or Ubuntu, with [extrepo](https://salsa.debian.org/extrepo-team/extrepo):
+On Debian or Ubuntu, one line:
+
+```sh
+curl -fsSL https://latest-debs.github.io/install.sh | sh
+```
+
+Or via [extrepo](https://salsa.debian.org/extrepo-team/extrepo):
 
 ```sh
 sudo extrepo enable latest-debs
