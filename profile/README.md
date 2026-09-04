@@ -113,13 +113,13 @@ sudo apt update
 > **Status: early days, but working.** All four suites (Bookworm, Trixie,
 > Forky, Sid) are live and signed today. The catalog grows one
 > [request](https://github.com/latest-debs/apt-repo/issues/new?template=package-request.yml)
-> at a time — 57 tools and counting.
+> at a time — 55 tools and counting.
 
 ## Packages
 
 <!-- packages:start -->
 
-**57 tools**, each a signed, test-gated `.deb` rebuilt automatically on every upstream release — `uv`, `vite-plus`, `eza`, `lazygit`, `ruff`, `bun`, `deno`, `duckdb`, `lazydocker`, `ripgrep`, `fd`, `fzf`, and 45 more.
+**55 tools**, each a signed, test-gated `.deb` rebuilt automatically on every upstream release — `uv`, `vite-plus`, `eza`, `lazygit`, `ruff`, `bun`, `deno`, `duckdb`, `lazydocker`, `ripgrep`, `fd`, `fzf`, and 43 more.
 
 Browse the full catalogue live — searchable, with the version we ship next to what Debian and Ubuntu ship — at **[latest-debs.github.io](https://latest-debs.github.io/#packages)**.
 
