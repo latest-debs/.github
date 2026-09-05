@@ -183,7 +183,7 @@ sudo apt update
 
 <!-- packages:start -->
 
-**60 tools**, each a signed, test-gated `.deb` rebuilt automatically on every upstream release — `uv`, `vite-plus`, `eza`, `lazygit`, `ruff`, `bun`, `deno`, `duckdb`, `lazydocker`, `ripgrep`, `fd`, `fzf`, and 48 more.
+**0 tools**, each a signed, test-gated `.deb` rebuilt automatically on every upstream release — .
 
 Browse the full catalogue live — searchable, with the version we ship next to what Debian and Ubuntu ship — at **[latest-debs.github.io](https://latest-debs.github.io/#packages)**.
 
