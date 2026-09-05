@@ -6,8 +6,8 @@
 
 <p align="center">
   <b>Latest stable releases of developer tools, packaged as <code>.deb</code> and served over <code>apt</code>.</b><br>
-  Debian freezes package versions for years. We track upstream and publish new releases within hours —<br>
-  and we've made the Debian packaging itself fast and easy, so any team can do the same.
+  Current within hours of upstream — on <b>nine architectures</b>, including the ones<br>
+  nobody else builds for — and with a written policy to <b>retire ourselves</b> when Debian catches up.
 </p>
 
 <p align="center">
@@ -17,6 +17,62 @@
   <a href="https://github.com/orgs/latest-debs/discussions"><img src="https://img.shields.io/badge/chat-org%20discussions-238636" alt="discussions"></a>
   <a href="https://github.com/sponsors/latest-debs"><img src="https://img.shields.io/badge/sponsor-%E2%9D%A4-ea4aaa" alt="sponsor"></a>
 </p>
+
+---
+
+## Three things that make this different
+
+Plenty of projects will hand you a newer binary. These are the parts that are
+hard to copy.
+
+### 1. Current, without moving your OS
+
+New upstream release in, signed `.deb` out, usually within hours — built *for*
+the stable suites, so `apt upgrade` gets you a current toolchain while
+everything else on the system stays where it is. That is the table stakes, and
+it is the only one of the three anyone else offers.
+
+### 2. The architectures nobody else covers
+
+Most third-party channels are amd64, sometimes plus arm64, and stop. We build
+every architecture each upstream actually publishes a Linux binary for — so
+the catalogue reaches hardware the alternatives simply do not serve. Measured
+on `trixie` today:
+
+| Architecture | Tools | Who else ships these |
+|---|---|---|
+| `amd64` / `arm64` | 50 / 51 | everyone |
+| `armhf` / `i386` | 23 / 18 | rarely |
+| `riscv64` | 14 — incl. `uv`, `ruff`, `fzf`, `just`, `starship`, `zoxide` | almost nobody |
+| `ppc64el` | 10 | almost nobody |
+| `s390x` | 9 — incl. `uv`, `ripgrep`, `trivy`, `k9s` | almost nobody |
+| `loong64` | 6 | almost nobody |
+| `armel` | 1 | almost nobody |
+
+**32 of the packaged tools ship on at least one architecture beyond
+amd64/arm64.** If you are on a RISC-V board, an s390x LPAR, or a POWER
+machine, that is the difference between `apt install` and a from-source build
+with a toolchain you have to maintain yourself.
+
+### 3. A policy that ends with us gone
+
+We retire ourselves when Debian catches up — written into the pipeline, not
+left to good intentions:
+
+- A tool reaches its latest upstream version in a **released** suite
+  (bookworm, trixie) → we **retire our package**. You already have it.
+- Parity in a **rolling** suite (forky, sid) → we **drop that suite only** and
+  keep shipping to the rest, because a stable-suite user cannot reach sid
+  without pinning.
+- Every hand-off is appended to a public
+  [ledger](https://github.com/latest-debs/apt-repo/blob/main/graduated.json)
+  saying where to go instead, so a package that leaves is never a dead end.
+
+The build applies those drops automatically from a daily parity report, and
+the [dashboard](https://latest-debs.github.io/status.html) counts suites
+handed back as **wins**, not as a backlog. No vendor apt repo and no Homebrew
+tap has an equivalent — nothing in either shrinks its own scope when the
+distribution catches up.
 
 ---
 
@@ -99,19 +155,27 @@ sudo apt update
 sudo apt install uv eza lazygit ruff bun deno duckdb lazydocker
 ```
 
+> [!IMPORTANT]
+> **`extrepo` is temporarily broken — use one of the other two above.** The
+> policy published in extrepo-data still points at our old base URI, which
+> serves the package indexes but no longer the packages themselves. `apt
+> update` succeeds and the tools appear, then `apt install` 404s. An update
+> is pending upstream.
+
 Or add the repository manually:
 
 ```sh
 sudo install -d -m 0755 /etc/apt/keyrings
 curl -fsSL https://raw.githubusercontent.com/latest-debs/apt-repo/main/latest-debs.asc \
   | sudo gpg --dearmor --yes -o /etc/apt/keyrings/latest-debs.gpg
-echo "deb [signed-by=/etc/apt/keyrings/latest-debs.gpg] https://latest-debs.github.io/apt-repo/ $(lsb_release -sc) main" \
+echo "deb [signed-by=/etc/apt/keyrings/latest-debs.gpg] https://latest-debs.ranjithraj.workers.dev/ $(lsb_release -sc) main" \
   | sudo tee /etc/apt/sources.list.d/latest-debs.list
 sudo apt update
 ```
 
-> **Status: early days, but working.** All four suites (Bookworm, Trixie,
-> Forky, Sid) are live and signed today. The catalog grows one
+> **Status: early days, but working.** All five Debian suites (Bullseye,
+> Bookworm, Trixie, Forky, Sid) are live and signed today, plus four Ubuntu
+> releases served as aliases. The catalog grows one
 > [request](https://github.com/latest-debs/apt-repo/issues/new?template=package-request.yml)
 > at a time — 55 tools and counting.
 
@@ -119,7 +183,7 @@ sudo apt update
 
 <!-- packages:start -->
 
-**55 tools**, each a signed, test-gated `.deb` rebuilt automatically on every upstream release — `uv`, `vite-plus`, `eza`, `lazygit`, `ruff`, `bun`, `deno`, `duckdb`, `lazydocker`, `ripgrep`, `fd`, `fzf`, and 43 more.
+**60 tools**, each a signed, test-gated `.deb` rebuilt automatically on every upstream release — `uv`, `vite-plus`, `eza`, `lazygit`, `ruff`, `bun`, `deno`, `duckdb`, `lazydocker`, `ripgrep`, `fd`, `fzf`, and 48 more.
 
 Browse the full catalogue live — searchable, with the version we ship next to what Debian and Ubuntu ship — at **[latest-debs.github.io](https://latest-debs.github.io/#packages)**.
 
@@ -127,9 +191,9 @@ Browse the full catalogue live — searchable, with the version we ship next to 
 
 ## Supported systems
 
-- **Debian:** Bookworm (12), Trixie (13), Forky (14/testing), Sid (unstable) — all live
-- **Ubuntu:** Jammy (22.04 LTS), Noble (24.04 LTS), Questing (25.10), Resolute (25.10+) — live
-- **Architectures:** amd64, arm64, armhf, armel, i386, ppc64el, riscv64, s390x, loong64 — whichever each upstream actually publishes a Linux build for, per suite (see each package's repo for its exact list)
+- **Debian:** Bullseye (11), Bookworm (12), Trixie (13), Forky (14/testing), Sid (unstable) — all live
+- **Ubuntu:** Jammy (22.04 LTS), Noble (24.04 LTS), Questing (25.10), Resolute (26.04 LTS) — served as aliases of a Debian suite with older-or-equal glibc, so no separate Ubuntu build is needed
+- **Architectures:** amd64, arm64, armhf, armel, i386, ppc64el, riscv64, s390x, loong64 — whichever each upstream actually publishes a Linux build for, per suite. See [the architecture table above](#2-the-architectures-nobody-else-covers) for how far the catalogue actually reaches on each.
 - **Updates:** the repo rebuilds automatically, roughly every 6 hours after an upstream release
 
 ## Trust & verification
